@@ -11,6 +11,7 @@ roots.pem
 
 */arduino_secrets.h
 BlinkHub/BlinkHub_/arduino_secrets.h
+/BlinkHub/BlinkHub_/arduino_secrets.h
 
 */.theia/*
 /.theia/*
