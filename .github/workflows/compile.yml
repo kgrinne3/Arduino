@@ -10,7 +10,7 @@ jobs:
   compile-sketch:
     name: Compile BlinkHub
     runs-on: ubuntu-latest
-    secrets: |
+    secrets: 
       SECRET_SSID: ${{secrets.SECRET_SSID}}
       SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
       PASSWORD: ${{secrets.PASSWORD}}
