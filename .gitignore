@@ -7,9 +7,16 @@ BlinkHub/cmake-build-debug/
 Hub_C_Version/cmake-build-debug/*
 
 *.pem
+roots.pem
 
 */arduino_secrets.h
+BlinkHub/BlinkHub_/arduino_secrets.h
 
-roots.pem
-*.pem
+*/.theia/
+/.theia/
+*/launch.json
+/launch.json
+
+*/sketch.json
+/sketch.json
 
