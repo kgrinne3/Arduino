@@ -10,12 +10,17 @@ jobs:
   compile-sketch:
     name: Compile BlinkHub
     runs-on: ubuntu-latest
-
+    secrets: |
+      SECRET_SSID: ${{secrets.SECRET_SSID}}
+      SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
+      PASSWORD: ${{secrets.PASSWORD}}
+      UNIQUE_ID: ${{secrets.UNIQUE_ID}}
+      APPKEY: ${{secrets.APPKEY}}
+      
     steps:
       # This step makes the contents of the repository available to the workflow
       - name: Checkout repository
         uses: actions/checkout@v4
-
       # For more information: https://github.com/arduino/compile-sketches#readme
       - name: BlinkHub Compile
         uses: arduino/compile-sketches@v1
@@ -48,11 +53,6 @@ jobs:
           sketches-report-path: |
             - ./reports/compile_report.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          SECRET_SSID: ${{secrets.SECRET_SSID}}
-          SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
-          PASSWORD: ${{secrets.PASSWORD}}
-          UNIQUE_ID: ${{secrets.UNIQUE_ID}}
-          APPKEY: ${{secrets.APPKEY}}
           enable-deltas-report: true
             
 #      - name: 'Upload Artifact'
