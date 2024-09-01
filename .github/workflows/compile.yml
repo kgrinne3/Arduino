@@ -16,13 +16,7 @@ jobs:
       PASSWORD: ${{secrets.PASSWORD}}
       UNIQUE_ID: ${{secrets.UNIQUE_ID}}
       APPKEY: ${{secrets.APPKEY}}
-      ACTION: ${{secrets.ACTION}}
-    #secrets: 
-    #  SECRET_SSID: ${{secrets.SECRET_SSID}}
-    #  SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
-    #  PASSWORD: ${{secrets.PASSWORD}}
-    #  UNIQUE_ID: ${{secrets.UNIQUE_ID}}
-    #  APPKEY: ${{secrets.APPKEY}}
+      SKETCHES_REPORTS_PATH: sketches-reports
       
     steps:
       # This step makes the contents of the repository available to the workflow
@@ -33,7 +27,10 @@ jobs:
         uses: arduino/compile-sketches@v1
         with:
           # The default is to compile for the Arduino Uno board. If you want to compile for other boards, use the `fqbn` input.
-          fqbn: "arduino:samd:mkrwifi1010"  
+          fqbn: arduino:samd:mkrwifi1010
+          platforms: |
+              - name: arduino:samd
+          artifact-name-suffix: arduino-samd-mkrwifi1010
           sketch-paths: |
             - ./BlinkHub/BlinkHub_/
           libraries: |
@@ -57,17 +54,16 @@ jobs:
             - name: ArduinoJson
             - name: StreamUtils
             - name: RTCZero
-          sketches-report-path: |
-            - ./reports/compile_report.txt
+          sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           enable-deltas-report: true
             
-#      - name: 'Upload Artifact'
+#      - name: Save Report as Artifact
 #        uses: actions/upload-artifact@v4
 #        with:
-#          name: compile_report
-#          path: ./reports/compile_report.txt
-#          overwrite: true
+#          if-no-files-found: error
+#          path: ${{ env.SKETCHES_REPORTS_PATH }}
+#          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
           
       - name: Badge Action
         uses: emibcn/badge-action@v2.0.3

@@ -11,10 +11,7 @@
 
 
 #include "Arduino.h"
-#ifndef ACTION
-	#include "arduino_secrets.h"
-	#define ACTION FALSE
-#endif
+#include "arduino_secrets.h"
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <ArduinoHttpClient.h>
@@ -27,14 +24,7 @@
 #include "Icon.h"
 #include "Image.h"
 
-//#define USE_SD_CARD
-
-// typedef struct Icon Icon;
-
 MKRIoTCarrier carrier;
-
-// SdFat sdCard;         // SD card filesystem
-// Adafruit_ImageReader reader(sdCard); // Image-reader object, pass in SD filesys
 
 char serverIP[] = "rest-prod.immedia-semi.com";
 WiFiSSLClient sslClient;
@@ -44,9 +34,7 @@ HttpClient httpClient = HttpClient(sslClient, serverIP, 443);
 HttpClient weatherClient = HttpClient(weather, target, 443);
 
 Hub_State *hubState; 
-//Icon *icon;
 Image currIcon;
-const char* type = "bmp";
 
 String authToken = String();
 bool loggedIn = false;
