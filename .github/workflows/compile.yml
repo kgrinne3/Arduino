@@ -53,7 +53,7 @@ jobs:
           PASSWORD: ${{secrets.PASSWORD}}
           UNIQUE_ID: ${{secrets.UNIQUE_ID}}
           APPKEY: ${{secrets.APPKEY}}
-          enable-deltas-report: true
+          #enable-deltas-report: true
             
 #      - name: 'Upload Artifact'
 #        uses: actions/upload-artifact@v4
