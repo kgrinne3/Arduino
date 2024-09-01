@@ -1,3 +1,4 @@
+         
 name: Compile Sketch
 
 # The workflow will run on every push and pull request to the repository
@@ -7,6 +8,7 @@ on:
 
 jobs:
   compile-sketch:
+    name: Compile BlinkHub
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       # For more information: https://github.com/arduino/compile-sketches#readme
-      - name: Compile BlinkHub
+      - name: BlinkHub Compile
         uses: arduino/compile-sketches@v1
         with:
           # The default is to compile for the Arduino Uno board. If you want to compile for other boards, use the `fqbn` input.
@@ -46,6 +48,11 @@ jobs:
           sketches-report-path: |
             - ./reports/compile_report.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          SECRET_SSID: ${{secrets.SECRET_SSID}}
+          SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
+          PASSWORD: ${{secrets.PASSWORD}}
+          UNIQUE_ID: ${{secrets.UNIQUE_ID}}
+          APPKEY: ${{secrets.APPKEY}}
           enable-deltas-report: true
             
 #      - name: 'Upload Artifact'
