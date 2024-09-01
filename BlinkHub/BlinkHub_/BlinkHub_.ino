@@ -11,7 +11,10 @@
 
 
 #include "Arduino.h"
-#include "arduino_secrets.h"
+#ifndef ACTION
+	#include "arduino_secrets.h"
+	#define ACTION FALSE
+#endif
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <ArduinoHttpClient.h>
