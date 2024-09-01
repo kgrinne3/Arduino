@@ -2,7 +2,8 @@
 
 Public Repo for Arduino Content
 
-![BlinkHub Compiled](https://github.com/kgrinne3/Arduino/actions/workflows/compile.yml/badge.svg)
+![BlinkHub Main](https://github.com/kgrinne3/Arduino/actions/workflows/compile.yml/badge.svg)  
+![BlinkHub workflowTesting](https://github.com/kgrinne3/Arduino/actions/workflows/compile.yml/badge.svg?branch=workflowTesting)
 
 
 ## Current Focus ##
