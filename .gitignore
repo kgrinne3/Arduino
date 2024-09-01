@@ -12,11 +12,11 @@ roots.pem
 */arduino_secrets.h
 BlinkHub/BlinkHub_/arduino_secrets.h
 
-*/.theia/
-/.theia/
+*/.theia/*
+/.theia/*
 */launch.json
 /launch.json
 
 */sketch.json
 /sketch.json
-
+BlinkHub/BlinkHub_/sketch.json

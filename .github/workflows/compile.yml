@@ -1,0 +1,64 @@
+name: Compile Sketch
+
+# The workflow will run on every push and pull request to the repository
+on:
+  - push
+  - pull_request
+
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # This step makes the contents of the repository available to the workflow
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # For more information: https://github.com/arduino/compile-sketches#readme
+      - name: Compile BlinkHub
+        uses: arduino/compile-sketches@v1
+        with:
+          # The default is to compile for the Arduino Uno board. If you want to compile for other boards, use the `fqbn` input.
+          fqbn: "arduino:samd:mkrwifi1010"  
+          sketch-paths: |
+            - ./BlinkHub/BlinkHub_/
+          libraries: |
+            #- source-path: ./BlinkHub/libraries/
+            - name: Adafruit BusIO
+            - name: Adafruit DotStar
+            - name: SD
+            - name: WiFiNINA
+            - name: ArduinoHttpClient
+            - name: Arduino_MKRIoTCarrier
+            - name: Arduino_BQ24195
+            - name: Arduino_APDS9960
+            - name: Arduino_LPS22HB
+            - name: BSEC Software Library
+            - name: Arduino_HTS221
+            - name: Arduino_LSM6DSOX
+            - name: Arduino_LSM6DS3
+            - name: Arduino_MCHPTouch
+            - name: Adafruit GFX Library
+            - name: Adafruit ST7735 and ST7789 Library
+            - name: ArduinoJson
+            - name: StreamUtils
+            - name: RTCZero
+          sketches-report-path: |
+            - ./reports/compile_report.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          enable-deltas-report: true
+            
+#      - name: 'Upload Artifact'
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: compile_report
+#          path: ./reports/compile_report.txt
+#          overwrite: true
+          
+      - name: Badge Action
+        uses: emibcn/badge-action@v2.0.3
+        with:
+            label: BlinkHub Compiled
+            status: $SUCCESS
+            path: '.github/badges/compiled.svg'
+          
