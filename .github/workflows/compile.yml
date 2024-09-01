@@ -1,5 +1,5 @@
          
-name: Compile Sketch ${{github.ref_name}}
+name: Compile BlinkHub
 
 # The workflow will run on every push and pull request to the repository
 on:
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       # For more information: https://github.com/arduino/compile-sketches#readme
-      - name: BlinkHub Compile
+      - name: Compile Sketch
         uses: arduino/compile-sketches@v1
         with:
           # The default is to compile for the Arduino Uno board. If you want to compile for other boards, use the `fqbn` input.
