@@ -16,6 +16,7 @@ jobs:
       PASSWORD: ${{secrets.PASSWORD}}
       UNIQUE_ID: ${{secrets.UNIQUE_ID}}
       APPKEY: ${{secrets.APPKEY}}
+      ACTION: ${{secrets.ACTION}}
     #secrets: 
     #  SECRET_SSID: ${{secrets.SECRET_SSID}}
     #  SECRET_OPTIONAL_PASS: ${{secrets.SECRET_OPTIONAL_PASS}}
