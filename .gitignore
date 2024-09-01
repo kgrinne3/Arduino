@@ -1,0 +1,15 @@
+/libraries/
+libraries/*
+libraries/
+CMAKE_hub/*
+
+BlinkHub/cmake-build-debug/
+Hub_C_Version/cmake-build-debug/*
+
+*.pem
+
+*/arduino_secrets.h
+
+roots.pem
+*.pem
+
